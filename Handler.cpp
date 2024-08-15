@@ -138,6 +138,7 @@ bool Handler::EnterChat(Chat *chat) {
 		return false;
 
 	this->chat = chat;
+	this->chat->AddUser(user.GetID());
 	return true;
 }
 
@@ -145,6 +146,7 @@ bool Handler::LeaveChat() {
 	if (!VerifyUser()) {
 		return false;
 	}
+	this->chat->RemoveUser(user.GetID());
 	this->chat = NULL;
 	return true;
 }
